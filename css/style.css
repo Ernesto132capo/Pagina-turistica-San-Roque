@@ -94,7 +94,7 @@ p { margin-bottom: 1rem; }
 
 .contenedor_video h2{
   font-family: 'Times New Roman', Times, serif;
-  font-size: 100px;
+  font-size: clamp(2.2rem, 8vw, 6.25rem);
 }
 
 
@@ -217,7 +217,8 @@ p { margin-bottom: 1rem; }
   background-image: linear-gradient(rgba(255, 253, 253, .85), rgba(182, 165, 162, .85)),
     url("../assets/images/banner.jpg.png");
     background-attachment: fixed;
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
   padding: 3rem 0;
   text-align: center;
   border-bottom: 1px solid var(--color-borde);
@@ -234,23 +235,23 @@ p { margin-bottom: 1rem; }
 
 #grid_inicio{
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.8rem;
 
 }
 #grid_galeria{
   display: grid;
-  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.8rem;
 }
 #grid_atractivos{
   display: grid;
-  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.8rem;
 }
 #grid_mapa{
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  grid-template-columns: 1.3fr 1fr;
   gap: 1.8rem;
 
 }
@@ -363,7 +364,7 @@ main img[tabindex="0"]:focus {
 
 .resumen-links {
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -675,7 +676,7 @@ main img[tabindex="0"]:focus {
 
 .lista-integrantes {
   display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   max-width: 780px;
   margin: 1.5rem auto 0;
@@ -761,5 +762,44 @@ main img[tabindex="0"]:focus {
 
   .seccion {
     padding: 2.8rem 0;
+  }
+
+
+  #grid_mapa {
+    grid-template-columns: 1fr;
+  }
+
+  .mapa-wrapper iframe {
+    height: 280px;
+  }
+
+  .contenedor_video {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contenedor_video video {
+    max-width: 100% !important;
+  }
+
+
+  .tabla-estilizada {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabla-estilizada img {
+    width: 140px;
+    height: 90px;
+  }
+
+
+  .contacto-layout {
+    display: block;
+  }
+
+  .encabezado-pagina {
+    background-attachment: scroll;
   }
 }
