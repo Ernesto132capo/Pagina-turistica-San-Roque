@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacto y créditos del sitio web sobre la Iglesia de San Roque de Tarija.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Contacto | Iglesia de San Roque</title>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-contenedor">
+      <a class="logo" href="index.html">San <strong>Roque</strong></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="historia.html">Historia</a></li>
+          <li><a href="atractivos.html">Atractivos</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="gastronomia-servicios.html">Gastronomía y Servicios</a></li>
+          <li><a href="como-llegar.html">Cómo llegar</a></li>
+          <li><a href="contacto.html" class="activo">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="encabezado-pagina">
+      <div class="contenedor">
+        <p class="eyebrow">Contacto y Créditos</p>
+        <h1>Escríbenos</h1>
+        <p>¿Tienes dudas, sugerencias o quieres compartir material sobre la Iglesia de San Roque? Completa el formulario.</p>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor contacto-layout">
+        <img src="assets/images/izquierda.jfif" alt="" class="imagen-contacto imagen-contacto-izquierda">
+
+        <div class="contacto-principal">
+        <form class="form-contacto" action="#" method="post">
+          <div class="campo-fila">
+            <div class="campo">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="campo">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="asunto">Asunto</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Selecciona una opción</option>
+              <option value="consulta">Consulta general</option>
+              <option value="material">Compartir material fotográfico</option>
+              <option value="correccion">Corrección de información</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+          </div>
+
+          <button type="submit" class="boton">Enviar mensaje</button>
+        </form>
+
+        <div class="creditos">
+          <p class="eyebrow" style="color:var(--color-adobe); text-transform:uppercase; letter-spacing:3px; font-size:0.8rem;">Créditos</p>
+          <h2>Dirty Code</h2>
+          <p>Sitio web elaborado con fines académicos por los siguientes integrantes:</p>
+          <ul class="lista-integrantes">
+            <li class="item_lista"><b><a href="https://www.instagram.com/duchen_valentina/">Valentina Duchen</a></b></li>
+            <li class="item_lista"><b><a href="https://www.instagram.com/ernesto2.0.0.5/">Ernesto Altamirano Vargas</a></b></li>
+            <li class="item_lista"><b><a href="https://www.instagram.com/fabricio.bordac/">Fabricio Borda Coria</a></b></li>
+            <li class="item_lista"><b><a href="https://www.instagram.com/_sandyy.06_/">Andres Sandy Gallardo</a></b></li>
+            <li class="item_lista"><b><a href="https://www.instagram.com/">Alan Gonzales</a></b></li>
+            <li class="item_lista"><b><a href="https://www.instagram.com/">Thierry Saucedo</a></b></li>
+          </ul>
+        </div>
+        </div>
+
+        <img src="assets/images/derecha.jfif" alt="" class="imagen-contacto imagen-contacto-derecha">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Sitio académico sobre la Iglesia de San Roque — Tarija, Bolivia.</p>
+    <p>Proyecto elaborado con HTML5 y CSS3 puro.</p>
+  </footer>
+
+</body>
+</html>
