@@ -775,8 +775,8 @@ main img[tabindex="0"]:focus {
   color: var(--color-adobe);
   font-weight: 700;
   font-size: 0.78rem;
-  opacity: 0;
-  transform: translateY(4px);
+  opacity: 1; /* <-- Visible siempre por defecto */
+  transform: translateY(0);
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -806,12 +806,30 @@ main img[tabindex="0"]:focus {
 
 
 
+@media (min-width: 769px) {
+  .lista-integrantes a::after {
+    opacity: 0; /* Se oculta solo en escritorio */
+    transform: translateY(4px);
+  }
+
+  /* Solo en PC se activa al pasar el mouse */
+  .lista-integrantes li:hover a::after,
+  .lista-integrantes a:focus-visible::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 
 
 
 @media (max-width: 700px) {
+
+
+
+
   .nav-contenedor {
     flex-direction: column;
     align-items: flex-start;
@@ -898,6 +916,8 @@ main img[tabindex="0"]:focus {
     width: 90px;
     height: 60px;
   }
+
+
 
 
   .contacto-layout {
