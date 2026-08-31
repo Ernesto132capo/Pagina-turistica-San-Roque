@@ -12,16 +12,24 @@
 <body>
 
   <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo-texto">San <strong>Roque</strong></span>
+      <strong class="logo-anio">2026</strong>
+    </a>
     <div class="nav-contenedor">
-      <a class="logo" href="index.html">San <strong>Roque</strong></a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-boton" aria-label="Abrir menú">☰</label>
       <nav>
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="historia.html">Historia</a></li>
-          <li><a href="atractivos.html" class="activo">Atractivos</a></li>
+          <li><a href="atractivos.html" class="activo"">Atractivos</a></li>
           <li><a href="galeria.html">Galería</a></li>
           <li><a href="gastronomia-servicios.html">Gastronomía y Servicios</a></li>
           <li><a href="como-llegar.html">Cómo llegar</a></li>
+          <li><a href="programa-fiesta.html">Programa de la Fiesta</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+          <li><a href="rutas-procesiones.html">Rutas de Procesión</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -39,7 +47,7 @@
 
     <section class="seccion">
       <div class="contenedor">
-        <div id="grid_atractivos" class="grid-tarjetas">
+        <div id="grid_atractivos" class="recorrido">
           <div class="tarjeta">
             <span class="img-zoom"><img src="./assets/images/fachada.jpg" alt="Fachada de piedra y adobe con detalles barrocos, referencia visual de la Iglesia de San Roque" tabindex="0"><button type="button" class="cerrar-zoom" aria-label="Cerrar imagen">&times;</button></span>
             <div class="tarjeta-contenido">
@@ -72,6 +80,51 @@
               <p>Cada agosto, los Chunchos Promesantes recorren la ciudad con turbante, ponchillo y pollerín en honor al santo.</p>
             </div>
           </div>
+            <div class="tarjeta">
+              <span class="img-zoom"><img src="./assets/images/masa.jpg" alt="Masas tradicionales de la fiesta de San Roque" tabindex="0"><button type="button" class="cerrar-zoom" aria-label="Cerrar imagen">&times;</button></span>
+              <div class="tarjeta-contenido">
+                <span class="numero">05</span>
+                <h3>Las masitas tradicionales</h3>
+                <p>Preparaciones dulces características de la fiesta, que se ofrecen en los puestos alrededor del templo durante la celebración.</p>
+              </div>
+            </div>
+            <div class="tarjeta">
+              <span class="img-zoom"><img src="./assets/images/mus.jpeg" alt="Museo de San Roque, ubicado junto al templo" tabindex="0"><button type="button" class="cerrar-zoom" aria-label="Cerrar imagen">&times;</button></span>
+              <div class="tarjeta-contenido">
+                <span class="numero">09</span>
+                <h3>El Museo de San Roque</h3>
+                <p>Ubicado junto al templo, resguarda piezas y objetos vinculados a la historia religiosa y cultural de la Fiesta Grande.</p>
+              </div>
+            </div>
+            <div class="tarjeta">
+              <span class="img-zoom"><img src="./assets/images/camp.jpg" alt="Decoración con temática de chunchos en la Plaza Campero" tabindex="0"><button type="button" class="cerrar-zoom" aria-label="Cerrar imagen">&times;</button></span>
+              <div class="tarjeta-contenido">
+                <span class="numero">06</span>
+                <h3>La Plaza Campero</h3>
+                <p>El espacio público frente al templo, engalanado con decoración alusiva a los Chunchos Promesantes durante la Fiesta Grande.</p>
+              </div>
+            </div>
+
+            <div class="tarjeta">
+              <span class="img-zoom"><img src="./assets/images/vinos.jpg" alt="Vinos artesanales vendidos cerca de la iglesia" tabindex="0"><button type="button" class="cerrar-zoom" aria-label="Cerrar imagen">&times;</button></span>
+              <div class="tarjeta-contenido">
+                <span class="numero">07</span>
+                <h3>Los vinos típicos</h3>
+                <p>Vinos artesanales de la región, ofrecidos por vendedores instalados alrededor del templo durante la celebración.</p>
+              </div>
+            </div>
+
+            <div class="tarjeta">
+              <span class="img-zoom"><img src="./assets/images/sante.jpeg" alt="Santería ubicada a pasos de la iglesia" tabindex="0"><button type="button" class="cerrar-zoom" aria-label="Cerrar imagen">&times;</button></span>
+              <div class="tarjeta-contenido">
+                <span class="numero">08</span>
+                <h3>Las santerías aledañas</h3>
+                <p>Locales cercanos al templo donde se consiguen artículos religiosos y recuerdos vinculados a la devoción a San Roque.</p>
+              </div>
+            </div>
+
+
+
         </div>
       </div>
     </section>
