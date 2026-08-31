@@ -665,6 +665,147 @@ main img[tabindex="0"]:focus {
   top: 100px;
 }
 
+
+
+
+/* Feria UPDS — galería con subida de fotos */
+.feria-panel {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  background-color: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 2rem;
+}
+ 
+.feria-panel form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+ 
+.feria-panel .campo-ancho {
+  grid-column: 1 / -1;
+}
+ 
+.feria-panel label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  font-size: 0.92rem;
+}
+ 
+.feria-panel input[type="text"],
+.feria-panel input[type="file"] {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+ 
+.feria-panel input:focus {
+  outline: 2px solid var(--color-adobe);
+  outline-offset: 1px;
+}
+ 
+.feria-panel .boton {
+  border: none;
+  cursor: pointer;
+  font-family: var(--fuente-texto);
+  justify-self: start;
+}
+ 
+.feria-panel .feria-mensaje {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  color: var(--color-adobe-oscuro);
+  min-height: 1.2rem;
+}
+ 
+.feria-vacio {
+  text-align: center;
+  color: var(--color-texto-suave);
+  padding: 2rem 1rem;
+  border: 1px dashed var(--color-borde);
+  border-radius: var(--radio);
+  max-width: 720px;
+  margin: 0 auto;
+}
+ 
+.feria-grid figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  position: relative;
+  background-color: #fff;
+}
+ 
+.feria-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 0.35s ease;
+}
+ 
+.feria-grid figure:hover img {
+  transform: scale(1.05);
+}
+ 
+.feria-grid figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: #fff;
+  padding: 2rem 0.9rem 0.6rem;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+ 
+.feria-grid figcaption span {
+  font-weight: 700;
+}
+ 
+.feria-borrar {
+  border: none;
+  background-color: rgba(192, 57, 43, 0.85);
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 0.95rem;
+}
+ 
+.feria-borrar:hover {
+  background-color: #922b21;
+}
+ 
+.feria-aviso {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--color-texto-suave);
+}
+
+
+
+
+
 @media (min-width: 950px) {
   .imagen-contacto {
     display: block;
@@ -826,6 +967,14 @@ main img[tabindex="0"]:focus {
 
 
 @media (max-width: 700px) {
+
+  .feria-panel form {
+    grid-template-columns: 1fr;
+  }
+  .feria-panel {
+    padding: 1.4rem;
+  }
+
 
 
 

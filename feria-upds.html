@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Feria UPDS: galería fotográfica donde los alumnos comparten imágenes de su exposición sobre la Iglesia de San Roque.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Feria UPDS | Iglesia de San Roque</title>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo-texto">San <strong>Roque</strong></span>
+      <strong class="logo-anio">2026</strong>
+    </a>
+    <div class="nav-contenedor">
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-boton" aria-label="Abrir menú">☰</label>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="historia.html">Historia</a></li>
+          <li><a href="atractivos.html">Atractivos</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="gastronomia-servicios.html">Gastronomía y Servicios</a></li>
+          <li><a href="como-llegar.html">Cómo llegar</a></li>
+          <li><a href="programa-fiesta.html">Programa de la Fiesta</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+          <li><a href="rutas-procesiones.html">Rutas de Procesión</a></li>
+          <li><a href="feria-upds.html" class="activo">Feria UPDS</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="encabezado-pagina">
+      <div class="contenedor">
+        <p class="eyebrow">Exposición estudiantil</p>
+        <h1>Feria UPDS</h1>
+        <p>Súbe tu foto de la feria y compártela con el resto del curso.</p>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor">
+
+        <p class="feria-aviso">
+          Las fotos que subas aquí se guardan en el servidor y las va a ver cualquiera que visite
+          esta página. Para eliminar una foto se pedirá una contraseña.
+        </p>
+
+        <div class="feria-panel">
+          <form id="formFeria">
+            <div class="campo-ancho">
+              <label for="alumnoInput">Nombre del alumno</label>
+              <input type="text" id="alumnoInput" name="alumno" placeholder="Tu nombre" required maxlength="60">
+            </div>
+            <div class="campo-ancho">
+              <label for="descripcionInput">Descripción (opcional)</label>
+              <input type="text" id="descripcionInput" name="descripcion" placeholder="Ej: Nuestro stand sobre la Fiesta Grande" maxlength="120">
+            </div>
+            <div class="campo-ancho">
+              <label for="fotoInput">Foto</label>
+              <input type="file" id="fotoInput" name="foto" accept="image/*" required>
+            </div>
+            <button type="submit" class="boton">Subir foto</button>
+            <p class="feria-mensaje" id="feriaMensaje" role="status"></p>
+          </form>
+        </div>
+
+        <p class="feria-vacio" id="feriaVacio" hidden>
+          Todavía no hay fotos en esta galería. ¡Sé el primero en subir una!
+        </p>
+
+        <div id="grid_feria" class="galeria-grid feria-grid"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Sitio académico sobre la Iglesia de San Roque — Tarija, Bolivia.</p>
+    <p>Proyecto elaborado con HTML5 y CSS3 puro. <a href="contacto.html">Ver créditos</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const grid = document.getElementById("grid_feria");
+      const vacio = document.getElementById("feriaVacio");
+      const mensaje = document.getElementById("feriaMensaje");
+      const form = document.getElementById("formFeria");
+      const botonSubir = form.querySelector("button[type='submit']");
+
+      function archivoABase64(archivo) {
+        return new Promise((resolve, reject) => {
+          const lector = new FileReader();
+          lector.onload = () => resolve(lector.result.split(",")[1]); // quita el prefijo data:...;base64,
+          lector.onerror = reject;
+          lector.readAsDataURL(archivo);
+        });
+      }
+
+      async function cargarFotos() {
+        const resp = await fetch("/api/fotos");
+        if (!resp.ok) throw new Error("No se pudieron cargar las fotos");
+        const { fotos } = await resp.json();
+        return fotos;
+      }
+
+      function crearTarjeta(foto) {
+        const figure = document.createElement("figure");
+
+        const zoomSpan = document.createElement("span");
+        zoomSpan.className = "img-zoom";
+
+        const img = document.createElement("img");
+        img.src = foto.url;
+        img.loading = "lazy";
+        img.alt = foto.descripcion
+          ? `Foto de ${foto.alumno}: ${foto.descripcion}`
+          : `Foto subida por ${foto.alumno} en la Feria UPDS`;
+        img.tabIndex = 0;
+
+        const cerrarBtn = document.createElement("button");
+        cerrarBtn.type = "button";
+        cerrarBtn.className = "cerrar-zoom";
+        cerrarBtn.setAttribute("aria-label", "Cerrar imagen");
+        cerrarBtn.innerHTML = "&times;";
+
+        zoomSpan.appendChild(img);
+        zoomSpan.appendChild(cerrarBtn);
+
+        const figcaption = document.createElement("figcaption");
+        const nombreSpan = document.createElement("span");
+        nombreSpan.textContent = foto.descripcion
+          ? `${foto.alumno} — ${foto.descripcion}`
+          : foto.alumno;
+
+        const borrarBtn = document.createElement("button");
+        borrarBtn.type = "button";
+        borrarBtn.className = "feria-borrar";
+        borrarBtn.title = "Borrar esta foto";
+        borrarBtn.setAttribute("aria-label", `Borrar foto de ${foto.alumno}`);
+        borrarBtn.innerHTML = "&times;";
+        borrarBtn.addEventListener("click", async () => {
+          const clave = window.prompt("Ingresa la contraseña para eliminar esta foto:");
+          if (clave === null) return; // canceló
+
+          borrarBtn.disabled = true;
+          try {
+            const resp = await fetch("/api/borrar", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ pathname: foto.pathname, clave }),
+            });
+            const datos = await resp.json();
+            if (!resp.ok) {
+              alert(datos.error || "No se pudo borrar la foto.");
+              return;
+            }
+            await pintarGaleria();
+          } catch (err) {
+            console.error(err);
+            alert("Error de conexión al intentar borrar la foto.");
+          } finally {
+            borrarBtn.disabled = false;
+          }
+        });
+
+        figcaption.appendChild(nombreSpan);
+        figcaption.appendChild(borrarBtn);
+
+        figure.appendChild(zoomSpan);
+        figure.appendChild(figcaption);
+        return figure;
+      }
+
+      async function pintarGaleria() {
+        try {
+          const fotos = await cargarFotos();
+          grid.innerHTML = "";
+
+          if (fotos.length === 0) {
+            vacio.hidden = false;
+            return;
+          }
+          vacio.hidden = true;
+          fotos.forEach((foto) => grid.appendChild(crearTarjeta(foto)));
+        } catch (err) {
+          console.error(err);
+          mensaje.textContent = "No se pudieron cargar las fotos de la galería.";
+        }
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const alumno = document.getElementById("alumnoInput").value.trim();
+        const descripcion = document.getElementById("descripcionInput").value.trim();
+        const fotoInput = document.getElementById("fotoInput");
+        const archivo = fotoInput.files[0];
+
+        if (!alumno || !archivo) {
+          mensaje.textContent = "Completa tu nombre y elige una foto.";
+          return;
+        }
+        if (!archivo.type.startsWith("image/")) {
+          mensaje.textContent = "El archivo debe ser una imagen.";
+          return;
+        }
+
+        botonSubir.disabled = true;
+        mensaje.textContent = "Subiendo foto...";
+
+        try {
+          const archivoBase64 = await archivoABase64(archivo);
+          const resp = await fetch("/api/upload", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              alumno,
+              descripcion,
+              archivoBase64,
+              nombreArchivo: archivo.name,
+              tipo: archivo.type,
+            }),
+          });
+          const datos = await resp.json();
+          if (!resp.ok) {
+            mensaje.textContent = datos.error || "No se pudo subir la foto.";
+            return;
+          }
+          form.reset();
+          mensaje.textContent = "¡Foto subida! Ya aparece en la galería.";
+          await pintarGaleria();
+        } catch (err) {
+          console.error(err);
+          mensaje.textContent = "Error de conexión al subir la foto.";
+        } finally {
+          botonSubir.disabled = false;
+        }
+      });
+
+      pintarGaleria();
+    })();
+  </script>
+
+</body>
+</html>
