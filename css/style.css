@@ -262,17 +262,48 @@ p { margin-bottom: 1rem; }
 .boton-secundario:hover {
   background-color: rgba(255, 255, 255, 0.15);
 }
+#cuerpo-feria{
+  background-image: linear-gradient(rgba(255, 253, 253, 0.3), rgba(182, 165, 162, .5)),
+    url("../assets/images/upds2.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  padding: 1rem 0;
+  text-align: center;
+}
 
+#encabezado-feria {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(rgba(255, 253, 253, 0.3), rgba(182, 165, 162, .5)),
+    url("../assets/images/upds2.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
 
+#encabezado-feria::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #e6f3ff;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+          mask-image: linear-gradient(to bottom, black, transparent);
+  z-index: 0;
+}
+
+#encabezado-feria .contenedor {
+  position: relative;
+  z-index: 1;
+}
 .encabezado-pagina {
-  background-image: linear-gradient(rgba(255, 253, 253, .85), rgba(182, 165, 162, .85)),
+  background-image: linear-gradient(rgba(255, 253, 253, .5), rgba(182, 165, 162, .5)),
     url("../assets/images/banner.jpg.png");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-  padding: 3rem 0;
+  padding: 2rem 0;
   text-align: center;
-  border-bottom: 1px solid var(--color-borde);
 }
 
 .encabezado-pagina p.eyebrow {
@@ -672,7 +703,7 @@ main img[tabindex="0"]:focus {
 .feria-panel {
   max-width: 720px;
   margin: 0 auto 3rem;
-  background-color: #fff;
+  background-color: var(--upds-azul-suave);
   border: 1px solid var(--color-borde);
   border-radius: var(--radio);
   box-shadow: var(--sombra);
@@ -805,6 +836,142 @@ main img[tabindex="0"]:focus {
 
 
 
+body.pagina-feria {
+  --upds-azul: #00bcf1;
+  --upds-azul-oscuro: #00417b;
+  --upds-azul-suave: #e6f8ff;
+}
+ 
+body.pagina-feria .encabezado-pagina p.eyebrow {
+  color: var(--upds-azul-oscuro);
+}
+ 
+body.pagina-feria .encabezado-pagina h1 {
+  color: var(--upds-azul-oscuro);
+}
+ 
+.feria-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 1.3rem;
+}
+ 
+.feria-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: var(--upds-azul);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 65, 123, 0.25);
+}
+ 
+.feria-chip-icono {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+ 
+body.pagina-feria .feria-aviso {
+  padding: 0.9rem 1.2rem;
+  background-color: var(--upds-azul-suave);
+  border-left: 4px solid var(--upds-azul);
+  border-radius: 0 var(--radio) var(--radio) 0;
+  color: var(--upds-azul-oscuro);
+  text-align: left;
+}
+ 
+body.pagina-feria .feria-panel {
+  position: relative;
+  border: none;
+  border-top: 6px solid var(--upds-azul);
+  overflow: visible;
+}
+ 
+body.pagina-feria .feria-panel::before {
+  content: "UPDS";
+  position: absolute;
+  top: -14px;
+  right: 1.6rem;
+  background-color: var(--upds-azul-oscuro);
+  color: #fff;
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+ 
+.feria-panel-titulo {
+  color: var(--upds-azul-oscuro, var(--color-vino));
+  font-size: 1.15rem;
+  margin-bottom: 1.2rem;
+}
+ 
+body.pagina-feria .feria-panel label {
+  color: var(--upds-azul-oscuro);
+}
+ 
+body.pagina-feria .feria-panel input:focus {
+  outline: 2px solid var(--upds-azul);
+}
+ 
+body.pagina-feria .feria-panel .boton {
+  background-color: var(--upds-azul-oscuro);
+}
+ 
+body.pagina-feria .feria-panel .boton:hover,
+body.pagina-feria .feria-panel .boton:focus-visible {
+  background-color: var(--upds-azul);
+}
+ 
+body.pagina-feria .feria-grid {
+  gap: 1.7rem;
+}
+ 
+body.pagina-feria .feria-grid figure {
+  border: 3px solid #fff;
+  box-shadow: 0 8px 20px rgba(0, 65, 123, 0.18);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.3s ease;
+}
+ 
+body.pagina-feria .feria-grid figure:nth-child(3n+1) { --tilt: -1.4deg; }
+body.pagina-feria .feria-grid figure:nth-child(3n+2) { --tilt: 1deg; }
+body.pagina-feria .feria-grid figure:nth-child(3n+3) { --tilt: -0.6deg; }
+ 
+body.pagina-feria .feria-grid figure:hover {
+  transform: rotate(0deg) translateY(-4px);
+  z-index: 2;
+}
+ 
+body.pagina-feria .feria-grid figcaption {
+  background: linear-gradient(transparent, rgba(0, 65, 123, 0.85));
+}
+ 
+body.pagina-feria .feria-borrar {
+  background-color: rgba(0, 65, 123, 0.85);
+}
+ 
+body.pagina-feria .feria-borrar:hover {
+  background-color: var(--upds-azul-oscuro);
+}
+ 
+body.pagina-feria .feria-vacio {
+  border-color: var(--upds-azul);
+  color: var(--upds-azul-oscuro);
+  background-color: var(--upds-azul-suave);
+}
+ 
+ 
 
 @media (min-width: 950px) {
   .imagen-contacto {

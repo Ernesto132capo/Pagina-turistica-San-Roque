@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Feria UPDS | Iglesia de San Roque</title>
 </head>
-<body>
+<body class="pagina-feria">
 
   <header class="site-header">
     <a class="logo" href="index.html">
@@ -30,7 +30,7 @@
           <li><a href="programa-fiesta.html">Programa de la Fiesta</a></li>
           <li><a href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
           <li><a href="rutas-procesiones.html">Rutas de Procesión</a></li>
-          <li><a href="feria-upds.html" class="activo">Feria UPDS</a></li>
+          <li><a href="feria-upds.html" class="activo">🔥 Feria UPDS</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -38,16 +38,38 @@
   </header>
 
   <main>
-    <section class="encabezado-pagina">
+    <section class="encabezado-pagina" id="encabezado-feria">
       <div class="contenedor">
-        <p class="eyebrow">Exposición estudiantil</p>
         <h1>Feria UPDS</h1>
         <p>Súbe tu foto de la feria y compártela con el resto del curso.</p>
       </div>
     </section>
 
-    <section class="seccion">
+    <section class="seccion" id="cuerpo-feria">
       <div class="contenedor">
+        <div class="feria-chips">
+          <span class="feria-chip">
+            <svg class="feria-chip-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 10 12 5 2 10l10 5 10-5Z"/>
+              <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/>
+            </svg>
+            UPDS Tarija
+          </span>
+          <span class="feria-chip">
+            <svg class="feria-chip-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M23 7 16 12l7 5V7Z"/>
+              <rect x="1" y="5" width="15" height="14" rx="2"/>
+            </svg>
+            Galería en vivo
+          </span>
+          <span class="feria-chip">
+            <svg class="feria-chip-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+            Feria 2026
+          </span>
+        </div>
 
         <p class="feria-aviso">
           Las fotos que subas aquí se guardan en el servidor y las va a ver cualquiera que visite
@@ -55,6 +77,7 @@
         </p>
 
         <div class="feria-panel">
+          <h2 class="feria-panel-titulo">Comparte tu foto del stand</h2>
           <form id="formFeria">
             <div class="campo-ancho">
               <label for="alumnoInput">Nombre del alumno</label>
