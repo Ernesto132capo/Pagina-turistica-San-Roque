@@ -1,13 +1,22 @@
 import { handleUpload } from "@vercel/blob/client";
 
-export default async function handler(request, response) {
+// handleUpload necesita un objeto Request/Response estándar de la web
+// (con request.json(), request.headers.get(), etc.), que solo entrega
+// el Edge Runtime — no el runtime Node.js clásico de Vercel.
+export const config = {
+  runtime: "edge",
+};
+
+export default async function handler(request) {
   try {
+    const body = await request.json();
+
     const jsonResponse = await handleUpload({
-      body: request.body,
+      body,
       request,
-      onBeforeGenerateToken: async (pathname) => {
+      onBeforeGenerateToken: async () => {
         // Solo se permiten imágenes, y hasta 8MB. La subida real va directo
-        // del navegador al Blob (por eso ya no pasa por el límite de la función).
+        // del navegador al Blob (por eso no pasa por el límite de la función).
         return {
           allowedContentTypes: ["image/jpeg", "image/png", "image/webp", "image/gif"],
           addRandomSuffix: false,
@@ -19,9 +28,15 @@ export default async function handler(request, response) {
       },
     });
 
-    return response.status(200).json(jsonResponse);
+    return new Response(JSON.stringify(jsonResponse), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (err) {
     console.error(err);
-    return response.status(400).json({ error: err.message || "No se pudo generar el permiso de subida" });
+    return new Response(
+      JSON.stringify({ error: err.message || "No se pudo generar el permiso de subida" }),
+      { status: 400, headers: { "Content-Type": "application/json" } }
+    );
   }
 }
